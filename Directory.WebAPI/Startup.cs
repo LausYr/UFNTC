@@ -1,7 +1,9 @@
+using Directory.WebAPI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,8 @@ namespace Directory.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var DataConnection = Configuration.GetConnectionString("DataConnection");
+            services.AddDbContext<ApplicationContext>(o => o.UseSqlServer(DataConnection));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -54,6 +58,14 @@ namespace Directory.WebAPI
             {
                 endpoints.MapControllers();
             });
+
+
+            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using (var serviceScope = serviceScopeFactory.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<ApplicationContext>();
+                dbContext.Database.EnsureCreated();
+            }
         }
     }
 }
