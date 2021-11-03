@@ -2,12 +2,13 @@
 
 namespace Directory.Entities.Models
 {
-    public class Organization
+    public class PositionWork
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public List<Subdivision> Subdivisions { get; set; } = new List<Subdivision>();
+        public List<Employee> Employees { get; set; } = new List<Employee>();
+
     }
 }
