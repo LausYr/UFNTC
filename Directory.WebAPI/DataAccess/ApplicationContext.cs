@@ -1,11 +1,7 @@
 ﻿using Directory.Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Directory.WebAPI.Data
+namespace Directory.WebAPI.DataAccess
 {
     public class ApplicationContext : DbContext
     {
@@ -14,6 +10,8 @@ namespace Directory.WebAPI.Data
         {
         }
         public DbSet<Organization> Organizations { get; set; }
+        public DbSet<Subdivision> Subdivisions { get; set; }
+        public DbSet<PositionWork> PositionWorks { get; set; }
         public DbSet<Employee> Employees { get; set; }
     }
 }
