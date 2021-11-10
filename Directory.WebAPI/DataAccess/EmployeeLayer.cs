@@ -1,5 +1,7 @@
 ﻿using Directory.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace Directory.WebAPI.DataAccess
 {
@@ -22,10 +24,35 @@ namespace Directory.WebAPI.DataAccess
                 throw;
             }
         }
+        public string GetPositionWorkId(string key)
+        {
+            try
+            {
+                int fltr = Int32.Parse(key);
+                return fltr.ToString();
+             
+            }
+            catch
+            {
+                PositionWork pw = db.PositionWorks.FirstOrDefault(pw => pw.Name.ToLower().Contains(key.ToLower()));
+                if (pw != null)
+                {
+                    int a = pw.Id;
+                    
+                    return a.ToString();
+                }
+                else
+                    return null;
+            }
+        }
         public void AddEmployee(Employee employee)
         {
             try
             {
+                employee.FirstName = Formating(employee.FirstName);
+                employee.LastName = Formating(employee.LastName);
+                employee.Patronymic = Formating(employee.Patronymic);
+                employee.PhoneNumber = '7' + employee.PhoneNumber.Remove(0, 1);
                 db.Employees.Add(employee);
                 db.SaveChanges();
             }
@@ -58,6 +85,13 @@ namespace Directory.WebAPI.DataAccess
             {
                 throw;
             }
+        }
+
+        private static string Formating(string name)
+        {
+            name = name.ToLower();
+            name = name.ToUpper()[0] + name.Substring(1);
+            return name;
         }
     }
 }

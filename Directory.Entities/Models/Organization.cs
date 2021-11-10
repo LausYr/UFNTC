@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Directory.Entities.Models
 {
@@ -6,8 +7,9 @@ namespace Directory.Entities.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Введите название организации")]
         public string Name { get; set; }
 
-        public List<Subdivision> Subdivisions { get; set; } = new List<Subdivision>();
+        public List<Subdivision> Subdivisions { get; set; }
     }
 }

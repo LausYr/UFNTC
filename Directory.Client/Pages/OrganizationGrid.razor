@@ -1,0 +1,61 @@
+﻿@page "/OrganizationGrid"
+
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor;
+@using Directory.Entities.Models;
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid TValue="@Organization" Toolbar="@(new List<string>() { "Add", "Edit", "Delete","Search" })" AllowPaging="true">
+                <SfDataManager Url="https://localhost:44348/api/Organization" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
+                <GridTemplates>
+                    <DetailTemplate>
+                        @{
+                            var organizations = (context as Organization);
+                            <SfGrid TValue="Subdivision" Query="@GetOrganizationsQuery(organizations)" Toolbar="@(new List<string>() { "Add", "Edit", "Delete"})" AllowPaging="true">
+                                <SfDataManager Url="https://localhost:44348/api/Subdivision" Adaptor="Adaptors.WebApiAdaptor"> </SfDataManager>
+                                <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
+                                <GridPageSettings PageSize="8"></GridPageSettings>
+                                <GridTemplates>
+                                    <DetailTemplate Context="EmployeeContext">
+                                        @{
+                                            var subdivision = (EmployeeContext as Subdivision);
+                                            <SfGrid TValue="Employee" Query="@GetSubdivisionQuery(subdivision)">
+                                                <SfDataManager Url="https://localhost:44348/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                                                <GridColumns>
+                                                    <GridColumn Visible="false" Field=@nameof(Employee.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true">
+                                                    </GridColumn>
+                                                    <GridColumn Field=@nameof(Employee.FirstName) HeaderText="Имя"></GridColumn>
+                                                    <GridColumn Field=@nameof(Employee.LastName) HeaderText="Фамииля"></GridColumn>
+                                                    <GridColumn Field=@nameof(Employee.Patronymic) HeaderText="Отчество"></GridColumn>
+                                                    <GridColumn Field=@nameof(Employee.PhoneNumber) HeaderText="Номер телефона"></GridColumn>
+                                                    <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
+                                                    <GridForeignColumn TValue=@PositionWork Field=@nameof(Employee.PositionWorkId) HeaderText="Должность" ForeignKeyValue="Name" ForeignKeyField="Id">
+                                                        <SfDataManager Url="https://localhost:44348/api/PositionWork" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                                                    </GridForeignColumn>
+                                                </GridColumns>
+                                            </SfGrid>
+                                        }
+                                    </DetailTemplate>
+                                </GridTemplates>
+                                <GridColumns>
+                                    <GridColumn Field=@nameof(Subdivision.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="20"> </GridColumn>
+                                    <GridColumn Field=@nameof(Subdivision.Name) HeaderText="Subdivision Name" Width="110"></GridColumn>
+                                    <GridColumn Visible="false" Field=@nameof(Subdivision.OrganizationId) DefaultValue=organizations.Id HeaderText="Organization ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="50"> </GridColumn>
+                                </GridColumns>
+                            </SfGrid>
+                        }
+                    </DetailTemplate>
+                </GridTemplates>
+                <GridColumns>
+                    <GridColumn Field=@nameof(Organization.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="20">
+                    </GridColumn>
+                    <GridColumn Field=@nameof(Organization.Name) HeaderText="Organization Name" Width="110"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>

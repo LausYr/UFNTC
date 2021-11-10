@@ -67,4 +67,313 @@
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+
+
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+
+    .maincontent {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 100vh;
+   
+    }
+
+    #wrapper .content {
+        font-size: 14px;
+        padding: 15px;
+    }
+    /* Sidebar styles */
+    .dockSidebar.e-sidebar.e-right.e-close {
+        visibility: visible;
+        transform: translateX(0%);
+    }
+
+    .dockSidebar .e-sb-icon::before {
+        font-size: 24px;
+    }
+
+    .dockSidebar.e-close .sidebar-item {
+        padding: 5px 20px;
+    }
+
+    .dockSidebar.e-dock.e-close span.e-text {
+        display: none;
+    }
+
+    .dockSidebar.e-dock.e-open span.e-text {
+        display: inline-block;
+    }
+
+    .dockSidebar span.e-icons {
+        line-height: 2
+    }
+
+    .e-open .e-icons {
+        margin-right: 16px;
+    }
+
+    .e-open .e-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 23px;
+        font-size: 15px;
+    }
+
+    .e-bigger .dockSidebar .e-listview .e-list-icon + .e-list-text {
+        padding-left: 10px;
+    }
+
+    .bootstrap4.e-bigger .dockSidebar .e-listview .e-list-icon + .e-list-text {
+        padding-left: 4px;
+    }
+
+    .bootstrap4.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .bootstrap.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .highcontrast.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -10px;
+    }
+
+    .bootstrap.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .bootstrap-dark.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -15px;
+    }
+
+    .material.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .material-dark.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -18px;
+    }
+
+    .fabric.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .fabric-dark.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -18px;
+    }
+
+    .e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons::before {
+        font-size: 26px;
+    }
+
+    .bootstrap5.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .bootstrap5-dark.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-bottom: -10px;
+    }
+
+    .tailwind.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .tailwind-dark.e-bigger .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-bottom: -3px;
+    }
+
+    .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin: 0;
+    }
+
+    .material .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .material-dark .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .bootstrap .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .bootstrap-dark .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -8px;
+    }
+
+    .tailwind .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .tailwind-dark .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin: 0 5px;
+        margin-top: -4px;
+    }
+
+    .bootstrap4 .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -8px;
+    }
+
+    .bootstrap5 .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .bootstrap5-dark .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-bottom: -12px;
+    }
+
+    .fabric .dockSidebar .e-listview .e-list-icon.sb-icons,
+    .fabric-dark .dockSidebar .e-listview .e-list-icon.sb-icons {
+        margin-top: -4px;
+    }
+
+    .dockSidebar .e-listview {
+        border: 0px;
+        border-radius: 0;
+    }
+
+    .dockToolbar.e-toolbar {
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .fabric .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .material .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .material-dark .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .bootstrap .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .fabric-dark .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .bootstrap-dark .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .bootstrap5 .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .bootstrap4 .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .bootstrap5-dark .dockSidebar .e-listview:not(.e-list-template) .e-list-item {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .tailwind .e-dock.e-close.dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .tailwind-dark .e-dock.e-close.dockSidebar .e-listview:not(.e-list-template) .e-list-item {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .highcontrast .dockSidebar .e-listview:not(.e-list-template) .e-list-item {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .material .dockToolbar.e-toolbar {
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .fabric .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .tailwind .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #d7d7d7;
+    }
+
+    .bootstrap5-dark .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #444c54;
+    }
+
+    .bootstrap5 .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .material-dark .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #616161;
+    }
+
+    .fabric-dark .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #414040;
+    }
+
+    .tailwind-dark .dockToolbar.e-toolbar {
+        border-bottom: 1px solid #4b5563;
+    }
+
+    .material .dockSidebar {
+        border-right: 1px solid rgba(0,0,0,0.12) !important;
+    }
+
+    .fabric .dockSidebar {
+        border-right: 1px solid #eaeaea !important;
+    }
+
+    .tailwind .dockSidebar {
+        border-right: 1px solid #d7d7d7 !important;
+    }
+
+    .bootstrap5-dark .dockSidebar {
+        border-right: 1px solid #444c54 !important;
+    }
+
+    .bootstrap5 .dockSidebar {
+        border-right: 1px solid #dee2e6 !important;
+    }
+
+    .material-dark .dockSidebar {
+        border-right: 1px solid #616161 !important;
+    }
+
+    .fabric-dark .dockSidebar {
+        border-right: 1px solid #414040 !important;
+    }
+
+    .tailwind-dark .dockSidebar {
+        border-right: 1px solid #4b5563 !important;
+    }
+
+    .e-bigger.bootstrap5 .dockSidebar .e-listview:not(.e-list-template) .e-list-item,
+    .e-bigger.bootstrap5-dark .dockSidebar .e-listview:not(.e-list-template) .e-list-item {
+        height: 43px;
+    }
+
+    #wrapper .dockSidebar {
+        z-index: 20 !important;
+    }
+
+
+    .dockSidebar .e-sb-icon {
+        font-family: 'sb-icons';
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .e-folder {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .e-bigger .e-folder {
+        font-size: 18px;
+    }
+
+    .bootstrap5 .e-folder-name, .bootstrap5-dark .e-folder-name {
+        margin-top: -2px;
+    }
+
+    .tailwind .e-folder-name, .tailwind-dark .e-folder-name, .bootstrap4 .e-folder-name,
+    .bootstrap .e-folder-name, .bootstrap-dark .e-folder-name {
+        margin-top: 3px;
+    }
+
+    .material .e-folder-name, .material-dark .e-folder-name {
+        margin-top: 1px;
+    }
+
+    .bootstrap5:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .bootstrap5-dark:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .bootstrap4:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .bootstrap:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .bootstrap-dark:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .highcontrast:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .material:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .material-dark:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+        margin-left: 10px;
+    }
+
+    .tailwind:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .tailwind-dark:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+        margin-left: 12px;
+    }
+
+    .fabric:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .fabric-dark:not(.e-bigger) .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+        margin-left: 8px;
+    }
+
+    .bootstrap5.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .bootstrap5-dark.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .highcontrast.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+        margin-left: 4px;
+    }
+
+    .material.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .material-dark.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+        margin-left: 6px;
+    }
+
+    .bootstrap4.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .tailwind.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+    .tailwind-dark.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+        margin-left: 8px;
+    }
 }

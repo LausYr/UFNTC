@@ -1,17 +1,34 @@
 ﻿@inherits LayoutComponentBase
-
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
-
-        <div class="content px-4">
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Lists
+<div id="wrapper">
+    <SfToolbar CssClass="dockToolbar">
+        <ToolbarEvents Clicked="@Toggle"></ToolbarEvents>
+        <ToolbarItems>
+            <ToolbarItem PrefixIcon="glyphicon glyphicon-cloud" TooltipText="Menu"></ToolbarItem>
+            <ToolbarItem>
+                <Template>
+                    <div class="e-folder">
+                        <div class="e-folder-name">Тестовое</div>
+                    </div>
+                </Template>
+            </ToolbarItem>
+        </ToolbarItems>
+    </SfToolbar>
+    <!-- main content declaration -->
+    <div id="main-content container-fluid col-md-12" class="maincontent">
+        <div>
             @Body
         </div>
     </div>
 </div>
+<SfSidebar Width="220px" DockSize="60px" Target=".maincontent" EnableDock="true" @ref="Sidebar" Type="@SidebarType.Auto" HtmlAttributes="@HtmlAttribute" @bind-IsOpen="SidebarToggle">
+    <ChildContent>
+        <SfListView DataSource="@List" TValue="listData" CssClass="e-template-list" @ref="ControlList" ShowIcon="true">
+            <ListViewFieldSettings TValue="listData" Id="Id" Text="Text" IconCss="IconCss"></ListViewFieldSettings>
+            <ListViewEvents TValue="listData" Clicked="OnSelect"></ListViewEvents>
+        </SfListView>
+    </ChildContent>
+</SfSidebar>

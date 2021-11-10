@@ -1,0 +1,49 @@
+﻿@page "/EmployeeGrid"
+
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor;
+@using Directory.Entities.Models;
+
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid TValue="@Employee" Toolbar="@(new List<string>() { "Add", "Edit", "Delete","Search" })" AllowPaging="true">
+                <SfDataManager Url="https://localhost:44348/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
+                <GridTemplates>
+                </GridTemplates>
+                <GridColumns>
+                    <GridColumn Visible="false" Field=@nameof(Employee.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true">
+                    </GridColumn>
+                    <GridColumn Field=@nameof(Employee.FirstName) HeaderText="Имя"></GridColumn>
+                    <GridColumn Field=@nameof(Employee.LastName) HeaderText="Фамииля"></GridColumn>
+                    <GridColumn Field=@nameof(Employee.Patronymic) HeaderText="Отчество"></GridColumn>
+                    <GridColumn Field=@nameof(Employee.PhoneNumber) HeaderText="Номер телефона"></GridColumn>
+                    <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
+                    <GridColumn Visible="false" Field=@nameof(Employee.SubdivisionId) HeaderText="SubdivisionId"></GridColumn>
+                    <GridForeignColumn TValue=@Subdivision Field=@nameof(Employee.SubdivisionId)
+                                       HeaderText="Подразделение" ForeignKeyValue="Name"
+                                       ForeignKeyField="Id" IsPrimaryKey="true"       
+                                       AllowSearching="false">
+                        <SfDataManager Url="https://localhost:44348/api/Subdivision"
+                                       Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
+                    </GridForeignColumn>
+                    <GridColumn  Field=@nameof(Employee.PositionWorkId) HeaderText="PositionWorkId"></GridColumn>
+                    <GridForeignColumn TValue=@PositionWork Field=@nameof(Employee.PositionWorkId)
+                                       HeaderText="Должность"
+                                       ForeignKeyValue="Name"
+                                       ForeignKeyField="Id"
+                                       AllowSearching="false">
+                        <SfDataManager Url="https://localhost:44348/api/PositionWork"
+                                       Adaptor="Adaptors.WebApiAdaptor"
+                                       CrossDomain="true"></SfDataManager>
+                    </GridForeignColumn>
+
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>
+
