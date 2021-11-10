@@ -33,7 +33,7 @@
                                                     <GridColumn Field=@nameof(Employee.Patronymic) HeaderText="Отчество"></GridColumn>
                                                     <GridColumn Field=@nameof(Employee.PhoneNumber) HeaderText="Номер телефона"></GridColumn>
                                                     <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
-                                                    <GridForeignColumn TValue=@PositionWork Field=@nameof(Employee.PositionWorkId) HeaderText="Должность" ForeignKeyValue="Name" ForeignKeyField="Id">
+                                                    <GridForeignColumn Visible="false"  TValue=@PositionWork Field=@nameof(Employee.PositionWorkId) HeaderText="Должность" ForeignKeyValue="Name" ForeignKeyField="Id">
                                                         <SfDataManager Url="https://localhost:44348/api/PositionWork" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
                                                     </GridForeignColumn>
                                                 </GridColumns>
@@ -42,18 +42,18 @@
                                     </DetailTemplate>
                                 </GridTemplates>
                                 <GridColumns>
-                                    <GridColumn Field=@nameof(Subdivision.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="20"> </GridColumn>
-                                    <GridColumn Field=@nameof(Subdivision.Name) HeaderText="Subdivision Name" Width="110"></GridColumn>
-                                    <GridColumn Visible="false" Field=@nameof(Subdivision.OrganizationId) DefaultValue=organizations.Id HeaderText="Organization ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="50"> </GridColumn>
+                                    <GridColumn  Visible="false" Field=@nameof(Subdivision.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="20"> </GridColumn>
+                                    <GridColumn Field=@nameof(Subdivision.Name) HeaderText="Подразделение" Width="110"></GridColumn>
+                                    <GridColumn Visible="false" Field=@nameof(Subdivision.OrganizationId) DefaultValue=organizations.Id HeaderText="Organization ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" > </GridColumn>
                                 </GridColumns>
                             </SfGrid>
                         }
                     </DetailTemplate>
                 </GridTemplates>
                 <GridColumns>
-                    <GridColumn Field=@nameof(Organization.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="20">
+                    <GridColumn  Visible="false" Field=@nameof(Organization.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" ValidationRules="@(new ValidationRules{ Required=true, Number=true})" TextAlign="TextAlign.Left" Width="20">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Organization.Name) HeaderText="Organization Name" Width="110"></GridColumn>
+                    <GridColumn Field=@nameof(Organization.Name) HeaderText="Организация"></GridColumn>
                 </GridColumns>
             </SfGrid>
         </div>

@@ -62,7 +62,7 @@ namespace Directory.WebAPI.Controllers
                 if (count == 0)
                 {
                     Emp = data.ToList();
-                    Emp.Add(new Employee());
+                    Emp.Add(new Employee {Id = 0, OrganizationId = 0, SubdivisionId = 0, PositionWorkId = 0 });
                     return new { Items = Emp.Skip(skip).Take(top), Count = Emp.Count()};
                 }
                 return new { Items = data.Skip(skip).Take(top), Count = count };

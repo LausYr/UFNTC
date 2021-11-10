@@ -22,15 +22,28 @@
                     <GridColumn Field=@nameof(Employee.Patronymic) HeaderText="Отчество"></GridColumn>
                     <GridColumn Field=@nameof(Employee.PhoneNumber) HeaderText="Номер телефона"></GridColumn>
                     <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
+
+                    <GridForeignColumn TValue=@Organization Field=@nameof(Employee.OrganizationId)
+                                       HeaderText="Организация" 
+                                       ForeignKeyValue="Name"
+                                       ForeignKeyField="Id" 
+                                       AllowSearching="false">
+                        <SfDataManager Url="https://localhost:44348/api/Organization"
+                                       Adaptor="Adaptors.WebApiAdaptor"
+                                       CrossDomain="true"></SfDataManager>
+                    </GridForeignColumn>
+
                     <GridColumn Visible="false" Field=@nameof(Employee.SubdivisionId) HeaderText="SubdivisionId"></GridColumn>
                     <GridForeignColumn TValue=@Subdivision Field=@nameof(Employee.SubdivisionId)
-                                       HeaderText="Подразделение" ForeignKeyValue="Name"
-                                       ForeignKeyField="Id" IsPrimaryKey="true"       
+                                       HeaderText="Подразделение" 
+                                       ForeignKeyValue="Name"
+                                       ForeignKeyField="Id"
                                        AllowSearching="false">
                         <SfDataManager Url="https://localhost:44348/api/Subdivision"
-                                       Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
+                                       Adaptor="Adaptors.WebApiAdaptor" 
+                                       CrossDomain="true"></SfDataManager>
                     </GridForeignColumn>
-                    <GridColumn  Field=@nameof(Employee.PositionWorkId) HeaderText="PositionWorkId"></GridColumn>
+                    <GridColumn Visible="false" Field=@nameof(Employee.PositionWorkId) HeaderText="PositionWorkId"></GridColumn>
                     <GridForeignColumn TValue=@PositionWork Field=@nameof(Employee.PositionWorkId)
                                        HeaderText="Должность"
                                        ForeignKeyValue="Name"

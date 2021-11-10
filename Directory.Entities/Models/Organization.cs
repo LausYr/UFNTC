@@ -11,5 +11,6 @@ namespace Directory.Entities.Models
         public string Name { get; set; }
 
         public List<Subdivision> Subdivisions { get; set; }
+        public List<Employee> Employees { get; set; }
     }
 }

@@ -12,8 +12,8 @@ namespace Directory.Entities.Models
 
         public List<Employee> Employees { get; set; }
 
-        [Required(ErrorMessage = "Укажите организацию")]
-        public int OrganizationId { get; set; }
+
+        public int? OrganizationId { get; set; }
 
         [ForeignKey("OrganizationId")]
         public Organization Organization { get; set; }
