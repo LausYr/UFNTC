@@ -28,6 +28,8 @@ namespace Directory.Entities.Models
         [EmailAddress(ErrorMessage = "Неверный формат email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Введите должность")]
+        public string PositionWork { get; set; }
 
         public int? OrganizationId { get; set; }
 
@@ -35,17 +37,11 @@ namespace Directory.Entities.Models
         public int? SubdivisionId { get; set; }
 
 
-        public int? PositionWorkId { get; set; }
-
-
         [ForeignKey("OrganizationId")]
-        public PositionWork Organization { get; set; }
+        public Organization Organization { get; set; }
 
         [ForeignKey("SubdivisionId")]
         public Subdivision Subdivision { get; set; }
-
-        [ForeignKey("PositionWorkId")]
-        public PositionWork PositionWork { get; set; }
 
     }
 }

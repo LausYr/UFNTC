@@ -9,7 +9,7 @@
 <div class="col-lg-12 control-section">
     <div class="content-wrapper">
         <div class="row">
-            <SfGrid TValue="@Employee" Toolbar="@(new List<string>() { "Add", "Edit", "Delete","Search" })" AllowPaging="true">
+            <SfGrid TValue="@Employee" Toolbar="@(new List<string>() {"Edit","Delete","Search" })" AllowPaging="true">
                 <SfDataManager Url="https://localhost:44348/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
                 <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
                 <GridTemplates>
@@ -20,13 +20,14 @@
                     <GridColumn Field=@nameof(Employee.FirstName) HeaderText="Имя"></GridColumn>
                     <GridColumn Field=@nameof(Employee.LastName) HeaderText="Фамииля"></GridColumn>
                     <GridColumn Field=@nameof(Employee.Patronymic) HeaderText="Отчество"></GridColumn>
+                    <GridColumn Field=@nameof(Employee.PositionWork) HeaderText="Должность"></GridColumn>
                     <GridColumn Field=@nameof(Employee.PhoneNumber) HeaderText="Номер телефона"></GridColumn>
                     <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
 
-                    <GridForeignColumn TValue=@Organization Field=@nameof(Employee.OrganizationId)
-                                       HeaderText="Организация" 
+                    <GridForeignColumn TValue=@Organization  IsPrimaryKey="true" IsIdentity="true" Field=@nameof(Employee.OrganizationId)
+                                       HeaderText="Организация"
                                        ForeignKeyValue="Name"
-                                       ForeignKeyField="Id" 
+                                       ForeignKeyField="Id"
                                        AllowSearching="false">
                         <SfDataManager Url="https://localhost:44348/api/Organization"
                                        Adaptor="Adaptors.WebApiAdaptor"
@@ -34,25 +35,16 @@
                     </GridForeignColumn>
 
                     <GridColumn Visible="false" Field=@nameof(Employee.SubdivisionId) HeaderText="SubdivisionId"></GridColumn>
-                    <GridForeignColumn TValue=@Subdivision Field=@nameof(Employee.SubdivisionId)
-                                       HeaderText="Подразделение" 
+                    <GridForeignColumn TValue=@Subdivision  IsPrimaryKey="true" IsIdentity="true" Field=@nameof(Employee.SubdivisionId)
+                                       HeaderText="Подразделение"
                                        ForeignKeyValue="Name"
                                        ForeignKeyField="Id"
                                        AllowSearching="false">
                         <SfDataManager Url="https://localhost:44348/api/Subdivision"
-                                       Adaptor="Adaptors.WebApiAdaptor" 
-                                       CrossDomain="true"></SfDataManager>
-                    </GridForeignColumn>
-                    <GridColumn Visible="false" Field=@nameof(Employee.PositionWorkId) HeaderText="PositionWorkId"></GridColumn>
-                    <GridForeignColumn TValue=@PositionWork Field=@nameof(Employee.PositionWorkId)
-                                       HeaderText="Должность"
-                                       ForeignKeyValue="Name"
-                                       ForeignKeyField="Id"
-                                       AllowSearching="false">
-                        <SfDataManager Url="https://localhost:44348/api/PositionWork"
                                        Adaptor="Adaptors.WebApiAdaptor"
                                        CrossDomain="true"></SfDataManager>
                     </GridForeignColumn>
+
 
                 </GridColumns>
             </SfGrid>

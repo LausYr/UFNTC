@@ -1,5 +1,7 @@
 ﻿using Directory.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Directory.WebAPI.DataAccess
 {
@@ -52,6 +54,11 @@ namespace Directory.WebAPI.DataAccess
             try
             {
                 Organization org = db.Organizations.Find(id);
+                var sub = db.Subdivisions.Where(s => s.OrganizationId == id);
+                
+                foreach (Subdivision subdivision in sub) {
+                   db.Subdivisions.Remove(subdivision);
+                }
                 db.Organizations.Remove(org);
                 db.SaveChanges();
             }

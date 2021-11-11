@@ -11,7 +11,6 @@ namespace Directory.WebAPI.Data
         }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Subdivision> Subdivisions { get; set; }
-        public DbSet<PositionWork> PositionWorks { get; set; }
         public DbSet<Employee> Employees { get; set; }
     }
 }

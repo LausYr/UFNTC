@@ -24,27 +24,7 @@ namespace Directory.WebAPI.DataAccess
                 throw;
             }
         }
-        public string GetPositionWorkId(string key)
-        {
-            try
-            {
-                int fltr = Int32.Parse(key);
-                return fltr.ToString();
-             
-            }
-            catch
-            {
-                PositionWork pw = db.PositionWorks.FirstOrDefault(pw => pw.Name.ToLower().Contains(key.ToLower()));
-                if (pw != null)
-                {
-                    int a = pw.Id;
-                    
-                    return a.ToString();
-                }
-                else
-                    return null;
-            }
-        }
+
         public void AddEmployee(Employee employee)
         {
             try
@@ -87,6 +67,10 @@ namespace Directory.WebAPI.DataAccess
             }
         }
 
+        public int? GetOrganizationId(int SubdivisionId)
+        {
+            return db.Subdivisions.FirstOrDefault(o=>o.Id == SubdivisionId).OrganizationId;
+        }
         private static string Formating(string name)
         {
             name = name.ToLower();

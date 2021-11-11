@@ -38,6 +38,7 @@ namespace Directory.WebAPI.Controllers
                         int fltr = Int32.Parse(filter[0].ToString().Split("eq")[1]);
                         data = data.Where(f => f.SubdivisionId == fltr).AsQueryable();
                         count = data.Count();
+
                     }
                 }
                 catch
@@ -53,16 +54,17 @@ namespace Directory.WebAPI.Controllers
                         || fil.Patronymic.ToLower().Contains(key.ToLower())
                         || fil.PhoneNumber.ToLower().Contains(key.ToLower())
                         || fil.Email.ToLower().Contains(key.ToLower())
-                        || fil.PositionWorkId.ToString().Contains(db.GetPositionWorkId(key.ToLower()))
+                        || fil.PositionWork.ToLower().Contains(key.ToLower())
+                        || fil.OrganizationId.ToString().Contains(key.ToLower())
+                        || fil.SubdivisionId.ToString().Contains(key.ToLower())
                         );
-                        count = data.Count();
                     }
                 }
               
-                if (count == 0)
+                if (data.Count() == 0)
                 {
                     Emp = data.ToList();
-                    Emp.Add(new Employee {Id = 0, OrganizationId = 0, SubdivisionId = 0, PositionWorkId = 0 });
+                    Emp.Add(new Employee {Id = 0, OrganizationId = 0, SubdivisionId = 0});
                     return new { Items = Emp.Skip(skip).Take(top), Count = Emp.Count()};
                 }
                 return new { Items = data.Skip(skip).Take(top), Count = count };

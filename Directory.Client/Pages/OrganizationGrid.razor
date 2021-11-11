@@ -22,20 +22,23 @@
                                 <GridTemplates>
                                     <DetailTemplate Context="EmployeeContext">
                                         @{
-                                            var subdivision = (EmployeeContext as Subdivision);
-                                            <SfGrid TValue="Employee" Query="@GetSubdivisionQuery(subdivision)">
+                                            var subdivisions = (EmployeeContext as Subdivision);
+                                            <SfGrid TValue="Employee" Query="@GetSubdivisionQuery(subdivisions)" Toolbar="@(new List<string>() { "Add", "Edit", "Delete"})">
                                                 <SfDataManager Url="https://localhost:44348/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
                                                 <GridColumns>
+                                                    <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
                                                     <GridColumn Visible="false" Field=@nameof(Employee.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true">
                                                     </GridColumn>
                                                     <GridColumn Field=@nameof(Employee.FirstName) HeaderText="Имя"></GridColumn>
                                                     <GridColumn Field=@nameof(Employee.LastName) HeaderText="Фамииля"></GridColumn>
                                                     <GridColumn Field=@nameof(Employee.Patronymic) HeaderText="Отчество"></GridColumn>
+
+                                                    <GridColumn Field=@nameof(Employee.PositionWork) HeaderText="Должность"></GridColumn>
                                                     <GridColumn Field=@nameof(Employee.PhoneNumber) HeaderText="Номер телефона"></GridColumn>
                                                     <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
-                                                    <GridForeignColumn Visible="false"  TValue=@PositionWork Field=@nameof(Employee.PositionWorkId) HeaderText="Должность" ForeignKeyValue="Name" ForeignKeyField="Id">
-                                                        <SfDataManager Url="https://localhost:44348/api/PositionWork" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
-                                                    </GridForeignColumn>
+                                                    <GridColumn Visible="false" Field=@nameof(Employee.OrganizationId) DefaultValue=organizations.Id HeaderText="OrganizationId"></GridColumn>
+                                                    <GridColumn Visible="false" Field=@nameof(Employee.SubdivisionId) DefaultValue=subdivisions.Id HeaderText="SubdivisionId"></GridColumn>
+
                                                 </GridColumns>
                                             </SfGrid>
                                         }

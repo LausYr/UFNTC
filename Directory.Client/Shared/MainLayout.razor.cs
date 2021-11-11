@@ -26,8 +26,7 @@ namespace Directory.Client.Shared
         public List<listData> List = new List<listData>
 {
         new listData {Id="1", Text = "Организации", IconCss = "glyphicon glyphicon-th"},
-        new listData {Id="2",Text = "Должности", IconCss = "glyphicon glyphicon-th"},
-        new listData {Id="3",Text = "Сотрудники", IconCss = "glyphicon glyphicon-th" },
+        new listData {Id="2",Text = "Сотрудники", IconCss = "glyphicon glyphicon-th" },
 
     };
         public class listData
@@ -44,9 +43,6 @@ namespace Directory.Client.Shared
                 case "1" : NavigationManager.NavigateTo("OrganizationGrid");
                     break;
                 case "2":
-                    NavigationManager.NavigateTo("PositionWorkGrid");
-                    break;
-                case "3":
                     NavigationManager.NavigateTo("EmployeeGrid");
                     break;
             }

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>4886c385-e406-481b-bc01-0661b5ab18be</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/de3b03c1-fe78-43fe-8964-8e398d665110/resourceGroups/DirectoryClient20211110140732ResourceGroup/providers/microsoft.insights/components/DirectoryClient</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
