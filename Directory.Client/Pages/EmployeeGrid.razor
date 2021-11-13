@@ -10,7 +10,7 @@
     <div class="content-wrapper">
         <div class="row">
             <SfGrid TValue="@Employee" Toolbar="@(new List<string>() {"Edit","Delete","Search" })" AllowPaging="true">
-                <SfDataManager Url="https://localhost:44348/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                <SfDataManager Url="https://directorywebapi.azurewebsites.net/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
                 <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
                 <GridTemplates>
                 </GridTemplates>
@@ -29,7 +29,7 @@
                                        ForeignKeyValue="Name"
                                        ForeignKeyField="Id"
                                        AllowSearching="false">
-                        <SfDataManager Url="https://localhost:44348/api/Organization"
+                        <SfDataManager Url="https://directorywebapi.azurewebsites.net/api/Organization"
                                        Adaptor="Adaptors.WebApiAdaptor"
                                        CrossDomain="true"></SfDataManager>
                     </GridForeignColumn>
@@ -40,7 +40,7 @@
                                        ForeignKeyValue="Name"
                                        ForeignKeyField="Id"
                                        AllowSearching="false">
-                        <SfDataManager Url="https://localhost:44348/api/Subdivision"
+                        <SfDataManager Url="https://directorywebapi.azurewebsites.net/api/Subdivision"
                                        Adaptor="Adaptors.WebApiAdaptor"
                                        CrossDomain="true"></SfDataManager>
                     </GridForeignColumn>

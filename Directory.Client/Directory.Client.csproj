@@ -3,13 +3,21 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>4886c385-e406-481b-bc01-0661b5ab18be</UserSecretsId>
-    <ApplicationInsightsResourceId>/subscriptions/de3b03c1-fe78-43fe-8964-8e398d665110/resourceGroups/DirectoryClient20211110140732ResourceGroup/providers/microsoft.insights/components/DirectoryClient</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/de3b03c1-fe78-43fe-8964-8e398d665110/resourceGroups/Directory/providers/microsoft.insights/components/DirectoryClient</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.11" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Blazor" Version="19.2.0.60" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>

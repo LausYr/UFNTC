@@ -9,14 +9,14 @@
     <div class="content-wrapper">
         <div class="row">
             <SfGrid TValue="@Organization" Toolbar="@(new List<string>() { "Add", "Edit", "Delete","Search" })" AllowPaging="true">
-                <SfDataManager Url="https://localhost:44348/api/Organization" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                <SfDataManager Url="https://directorywebapi.azurewebsites.net/api/Organization" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
                 <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
                 <GridTemplates>
                     <DetailTemplate>
                         @{
                             var organizations = (context as Organization);
                             <SfGrid TValue="Subdivision" Query="@GetOrganizationsQuery(organizations)" Toolbar="@(new List<string>() { "Add", "Edit", "Delete"})" AllowPaging="true">
-                                <SfDataManager Url="https://localhost:44348/api/Subdivision" Adaptor="Adaptors.WebApiAdaptor"> </SfDataManager>
+                                <SfDataManager Url="https://directorywebapi.azurewebsites.net/api/Subdivision" Adaptor="Adaptors.WebApiAdaptor"> </SfDataManager>
                                 <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
                                 <GridPageSettings PageSize="8"></GridPageSettings>
                                 <GridTemplates>
@@ -24,7 +24,7 @@
                                         @{
                                             var subdivisions = (EmployeeContext as Subdivision);
                                             <SfGrid TValue="Employee" Query="@GetSubdivisionQuery(subdivisions)" Toolbar="@(new List<string>() { "Add", "Edit", "Delete"})">
-                                                <SfDataManager Url="https://localhost:44348/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                                                <SfDataManager Url="https://directorywebapi.azurewebsites.net/api/Employee" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
                                                 <GridColumns>
                                                     <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Dialog"></GridEditSettings>
                                                     <GridColumn Visible="false" Field=@nameof(Employee.Id) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true">

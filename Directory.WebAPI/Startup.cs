@@ -21,15 +21,12 @@ namespace Directory.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             var DataConnection = Configuration.GetConnectionString("DataConnection");
-            services.AddCors();
             services.AddDbContext<ApplicationContext>(o => o.UseSqlServer(DataConnection));
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Directory.WebAPI", Version = "v1" });
             });
-          
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -37,26 +34,21 @@ namespace Directory.WebAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Directory.WebAPI v1"));
+ 
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Directory.WebAPI v1"));
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
-            using var serviceScope = serviceScopeFactory.CreateScope();
-            var dbContext = serviceScope.ServiceProvider.GetService<ApplicationContext>();
-            dbContext.Database.EnsureCreated();
         }
     }
 }
